@@ -1,0 +1,196 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+<div style="width: 50%;text-align: center;margin: auto;">
+<form method="GET">
+  <div class="form-row">
+      <div class="form-group col-12">
+          <div class="input-group">
+              <input class="form-control py-2 border-right-0 border" type="search" name="code" placeholder="Your code" disabled value="{{request.user.username}}" />
+              <span class="input-group-append">
+                  {% comment %} <div class="input-group-text bg-transparent">
+                      <i class="fa fa-search"></i>
+                  </div> {% endcomment %}
+              </span>
+          </div>
+      </div>        
+  </div>
+  <br>
+  <div class="form-row">
+      <div class="form-group col-12">
+          <div class="input-group">
+              <input class="form-control py-2 border-right-0 border" type="search" name="month" placeholder="Enter Month" />
+              <span class="input-group-append">
+                  {% comment %} <div class="input-group-text bg-transparent">
+                      <i class="fa fa-search"></i>
+                  </div> {% endcomment %}
+              </span>
+          </div>
+      </div>        
+  </div>
+  <br>
+  <div class="form-row">
+      <div class="form-group col-12">
+          <div class="input-group">
+              <input class="form-control py-2 border-right-0 border" type="search" name="year" placeholder="Enter Year" />
+              <span class="input-group-append">
+                  
+              </span>
+          </div>
+      </div>        
+  </div>
+  <br>
+  <button type="submit" class="btn btn-primary">Search</button> &nbsp;
+  &nbsp;<a href="/" class="btn btn-danger">Clear Filter</a>
+</form>
+</div>
+<br>
+<!-- ---------------------------------------------- -->
+{% for person in person %}
+<div class="card">
+  <div class="title">
+    <p class="heading">MANAGER X</p>
+    <h3 class="desc">{{person.month}}</h3>
+  </div>
+  <div class="wrapper">
+    <div class="color anti-flash-white">
+      Code
+      <span class="hex">{{person.code}}</span>
+    </div>
+    <div class="color night-rider">
+      الاسم
+      <span class="hex">{{person.name}}</span>
+    </div>
+    <div class="color anti-flash-white">
+      الشهر
+      <span class="hex">{{person.month}}</span>
+    </div>
+    <div class="color night-rider">
+      السنة
+      <span class="hex">{{person.year}}</span>
+    </div>
+    <div class="color anti-flash-white">
+      اساسي
+      <span class="hex">{{person.Basic}}</span>
+    </div>
+    <div class="color night-rider">
+      طبيعه
+      <span class="hex">{{person.nature}}</span>
+    </div>
+    <div class="color anti-flash-white">
+      مواصلات
+      <span class="hex">{{person.communications}}</span>
+    </div>
+    <div class="color night-rider">
+      وجبه
+      <span class="hex">{{person.meal}}</span>
+    </div>
+    <div class="color anti-flash-white">
+      تليفون
+      <span class="hex">{{person.phone}}</span>
+    </div>
+    <div class="color night-rider">
+      الاجمالي
+      <span class="hex">{{person.Total}}</span>
+    </div>
+  
+  </div>
+  
+  <hr>
+  <div class="wrapper">
+    <div class="color anti-flash-white">
+      مكافات
+      <span class="hex">{{person.Bonuses}}</span>
+    </div>
+    <div class="color night-rider">
+      اضافي
+      <span class="hex">{{person.extra}}</span>
+    </div>
+    <div class="color anti-flash-white">
+      بدلات اخري
+      <span class="hex">{{person.Other_allowances}}</span>
+    </div>
+    <div class="color night-rider">
+      اجمالي الاستحقاقات
+      <span class="hex">{{person.Total_accruals}}</span>
+    </div>
+    <div class="color anti-flash-white">
+      جزاءات
+      <span class="hex">{{person.Sanctions}}</span>
+    </div>
+    <div class="color night-rider">
+      غيابات
+      <span class="hex">{{person.Absences}}</span>
+    </div>
+    <div class="color anti-flash-white">
+      تامينات
+      <span class="hex">{{person.Insurances}}</span>
+    </div>
+    <div class="color night-rider">
+      ضريبة دخل
+      <span class="hex">{{person.income_tax}}</span>
+    </div>
+    <div class="color anti-flash-white">
+      خدمة طبيه
+      <span class="hex">{{person.Medical_service}}</span>
+    </div>
+    <div class="color night-rider">
+      سلف
+      <span class="hex">{{person.Loans}}</span>
+    </div>
+    <div class="color anti-flash-white">
+      خصومات
+      <span class="hex">{{person.Discounts}}</span>
+    </div>
+    <div class="color night-rider">
+      سيارة
+      <span class="hex">{{person.car}}</span>
+    </div>
+    <div class="color anti-flash-white">
+      اخري
+      <span class="hex">{{person.another}}</span>
+    </div>
+    <div class="color night-rider">
+      اجمالي الاستقطاعات 
+      <span class="hex">{{person.Total_deductions}}</span>
+    </div>
+  
+  </div>
+  <hr>
+  <div class="wrapper">
+    <div class="border">صافي الراتب المستحق &nbsp; <span>{{person.Net_salary_payable}}</span></div>
+  </div>
+  <hr>
+  <div class="wrapper">
+    <div class="color anti-flash-white">
+      سلفة شخصية
+      <span class="hex">{{person.personal_loan}}</span>
+    </div>
+    <div class="color night-rider">
+      الصافي
+      <span class="hex">{{person.net}}</span>
+    </div>
+    <div class="color anti-flash-white">
+      ايام المكافئات
+      <span class="hex">{{person.Reward_days}}</span>
+    </div>
+    <div class="color night-rider">
+      عدد ساعات الاضافي
+      <span class="hex">{{person.Overtime_hours}}</span>
+    </div>
+    <div class="color anti-flash-white">
+      عدد ايام الغياب بإذن
+      <span class="hex">{{person.Absence_with_permission}}</span>
+    </div>
+    <div class="color night-rider">
+      عدد ساعات التاخير
+      <span class="hex">{{person.Late_hours}}</span>
+    </div>
+  </div>
+</div>
+<br>
+<hr style="border: solid aqua 3px;">
+{% endfor %}
+
+{% endblock %}
+

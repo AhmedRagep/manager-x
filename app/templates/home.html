@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+<!-- <h1 class="hello">hello</h1> -->
+<div style="width: 50%;text-align: center;margin: auto;">
+  <form method="GET">
+    <div class="form-row">
+        <div class="form-group col-12">
+            <div class="input-group">
+                <input class="form-control py-2 border-right-0 border" type="search" name="code" placeholder="Your code" disabled value="{{request.user.username}}" />
+                <span class="input-group-append">
+                    {% comment %} <div class="input-group-text bg-transparent">
+                        <i class="fa fa-search"></i>
+                    </div> {% endcomment %}
+                </span>
+            </div>
+        </div>        
+    </div>
+    <br>
+    <div class="form-row">
+        <div class="form-group col-12">
+            <div class="input-group">
+                <input class="form-control py-2 border-right-0 border" type="search" name="month" placeholder="Enter Month" />
+                <span class="input-group-append">
+                    {% comment %} <div class="input-group-text bg-transparent">
+                        <i class="fa fa-search"></i>
+                    </div> {% endcomment %}
+                </span>
+            </div>
+        </div>        
+    </div>
+    <br>
+    <div class="form-row">
+        <div class="form-group col-12">
+            <div class="input-group">
+                <input class="form-control py-2 border-right-0 border" type="search" name="year" placeholder="Enter Year" />
+                <span class="input-group-append">
+                    
+                </span>
+            </div>
+        </div>        
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+</div>
+<br>
+{% for person in person %}
+  <div class="card">
+    <div class="card-body">
+      <table class="table table-hover table-bordered">
+        <thead class="thead-light">
+          <h1 style="text-align: center;">{{person.month}}</h1>
+          <br>
+          <tr>
+            <th scope="col">Code</th>
+            <th scope="col">الاسم</th>
+            <th scope="col">الشهر</th>
+            <th scope="col">السنة</th>
+            <th scope="col">اساسي</th>
+            <th scope="col">طبيعه</th>
+            <th scope="col">مواصلات</th>
+            <th scope="col">وجبه</th>
+            <th scope="col">تليفون</th>
+            <th scope="col">الاجمالي</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            
+              <th scope="row">{{person.code}}</th>
+              <td>{{person.name}}</td>
+              <td>{{person.month}}</td>
+              <td>{{person.year}}</td>
+              <td>{{person.Basic}}</td>
+              <td>{{person.nature}}</td>
+              <td>{{person.communications}}</td>
+              <td>{{person.meal}}</td>
+              <td>{{person.phone}}</td>
+              <td>{{person.Total}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th scope="col">مكافات</th>
+            <th scope="col">اضافي</th>
+            <th scope="col">بدلات اخري</th>
+            <th scope="col">اجمالي الاستحقاقات</th>
+            <th scope="col">جزاءات</th>
+            <th scope="col">غيابات</th>
+            <th scope="col">تامينات</th>
+            <th scope="col">ضريبة دخل</th>
+            <th scope="col">خدمة طبيه</th>
+            <th scope="col">سلف</th>
+            <th scope="col">خصومات</th>
+            <th scope="col">سيارة</th>
+            <th scope="col">اخري</th>
+            <th scope="col">اجمالي الاستقطاعات</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{person.Bonuses}}</td>
+            <td>{{person.extra}}</td>
+            <td>{{person.Other_allowances}}</td>
+            <td>{{person.Total_accruals}}</td>
+            <td>{{person.Sanctions}}</td>
+            <td>{{person.Absences}}</td>
+            <td>{{person.Insurances}}</td>
+            <td>{{person.income_tax}}</td>
+            <td>{{person.Medical_service}}</td>
+            <td>{{person.Loans}}</td>
+            <td>{{person.Discounts}}</td>
+            <td>{{person.car}}</td>
+            <td>{{person.another}}</td>
+            <td>{{person.Total_deductions}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th style="text-align: center;" scope="col">صافي الراتب المستحق</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align: center;">{{person.Net_salary_payable}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">سلفة شخصية</th>
+            <th scope="col">الصافي</th>
+            <th scope="col">ايام المكافئات</th>
+            <th scope="col">عدد ساعات الاضافي</th>
+            <th scope="col">عدد ايام الغياب بإذن</th>
+            <th scope="col">عدد ساعات التاخير</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{person.personal_loan}}</td>
+            <td>{{person.net}}</td>
+            <td>{{person.Reward_days}}</td>
+            <td>{{person.Overtime_hours}}</td>
+            <td>{{person.Absence_with_permission}}</td>
+            <td>{{person.Late_hours}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+  <br>
+  <hr style="color: aqua; border: solid 3px;">
+  <br>
+{% endfor %}
+
+{%comment%}<h3 class="heading mb-4">Find Mony</h3>
+<form class="form">
+  {% csrf_token %}
+  {% bootstrap_form filter.form %}
+  {% buttons %}
+    <button type="submit" class="btn btn-primary">
+      Search
+    </button>
+  {% endbuttons %}
+</form>  {%endcomment%}
+{% endblock %}

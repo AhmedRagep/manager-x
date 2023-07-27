@@ -1,0 +1,184 @@
+<style>
+  .Navbar {
+  background-color: #46ACC2;
+  display: flex;
+  padding: 16px;
+  font-family: sans-serif;
+  color: white;
+  }
+  .Navbar__Link {
+    padding-right: 8px;
+  }
+  .Navbar__Items {
+    display: flex;
+  }
+  .Navbar__Items--right {
+    margin-left:auto;
+  }
+  .Navbar__Link-toggle {
+    display: none;
+  }
+  .Navbar a:hover {
+    color: #24291f;
+  }
+  @media only screen and (max-width: 768px) {
+    .Navbar__Items,
+    .Navbar {
+      flex-direction: column;
+    }
+  .Navbar__Items {
+      display:none;
+    }
+  .Navbar__Items--right {
+      margin-left:0;
+    }
+  .Navbar__ToggleShow {
+      display: flex;
+    }
+  .Navbar__Link-toggle {
+      align-self: flex-end;
+      display: initial;
+      position: absolute;
+      cursor: pointer;
+    } 
+  }
+</style>
+
+
+<div class="Navbar">
+  <div class="Navbar__Link Navbar__Link-brand">
+    <strong>Manger-X</strong>
+  </div>
+  <div class="Navbar__Link Navbar__Link-toggle">
+    <i class="fa fa-bars"></i>
+  </div>
+ <nav class="Navbar__Items">
+  &nbsp;     &nbsp;     &nbsp;
+  {% if user.is_authenticated %}
+    <div class="Navbar__Link">
+      <a class="nav-link" href="{% url 'dashboard' %}">Dashboard&nbsp;<i class="fa fa-home" aria-hidden="true"></i> </a>
+    </div>
+    &nbsp;     &nbsp;
+    <div class="Navbar__Link">
+      <a class="nav-link" href="{% url 'logout' %}">Sign out&nbsp;<i class="fa fa-sign-out" aria-hidden="true"></i> </a>
+    </div>
+    &nbsp;     &nbsp; 
+    <div class="Navbar__Link">
+      <a class="nav-link" href="https://www.facebook.com/AHTHackerr">Ahmed&nbsp;<i class="fa fa-facebook-official" aria-hidden="true"></i> </a>
+    </div>
+  {% else %}
+  <div class="Navbar__Link">
+    <a class="nav-link" href="{% url 'register' %}"> Register </a>
+  </div>
+    &nbsp;     &nbsp;     &nbsp; 
+  <div class="Navbar__Link">
+    <a class="nav-link" href="{% url 'login' %}">Login</a>
+  </di>
+    
+  {% endif %}
+   
+ </nav>
+ <!-- <nav class="Navbar__Items Navbar__Items--right">
+   <div class="Navbar__Link">
+     Link
+   </div>
+   <div class="Navbar__Link">
+     Link
+   </div>
+ </nav> -->
+
+
+ <script>
+  function classToggle() {
+  const navs = document.querySelectorAll('.Navbar__Items')
+  
+  navs.forEach(nav => nav.classList.toggle('Navbar__ToggleShow'));
+  }
+  document.querySelector('.Navbar__Link-toggle')
+    .addEventListener('click', classToggle);
+</script>
+</div>
+
+<!-- <div class="navwidth">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary justify-content-center">
+
+    <a class="navbar-brand main-heading" href="/"> 
+            
+      &nbsp; Manger-X
+    
+    </a>
+  
+  
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+  
+    </button>
+  
+  
+      <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
+  
+        
+        <ul class="navbar-nav mr-auto">
+  
+  
+          &nbsp;     &nbsp;     &nbsp; 
+  
+          {% if user.is_authenticated %}
+  
+            <li class="nav-item">
+        
+              <a class="nav-link" href="{% url 'dashboard' %}">Dashboard &nbsp; <i class="fa fa-home" aria-hidden="true"></i> </a>
+  
+            </li>
+  
+  
+            &nbsp;     &nbsp;     &nbsp; 
+  
+  
+            <li class="nav-item">
+  
+              <a class="nav-link" href="{% url 'logout' %}">Sign out &nbsp; <i class="fa fa-sign-out" aria-hidden="true"></i> </a>
+  
+            </li>
+  
+  
+        </ul>
+  
+        {% else %}
+  
+        <li class="nav-item">
+  
+          <a class="nav-link" href="{% url 'register' %}"> Register </a>
+  
+        </li>
+  
+  
+        &nbsp;     &nbsp;     &nbsp; 
+  
+  
+        <li class="nav-item">
+  
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+  
+        </li>
+        {% endif %}
+        
+
+      
+        
+      </div>
+  
+  
+  </nav>
+
+</div>
+
+ -->
